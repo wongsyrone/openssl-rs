@@ -1,0 +1,24 @@
+[package]
+name = "openssl-rs-sys"
+version = "0.1.0"
+links = "openssl"
+build = "build/main.rs"
+
+[features]
+vendored = ['openssl-src']
+
+[dependencies]
+libc = "0"
+
+[build-dependencies]
+cc = "1"
+openssl-src = { version = "111.0.1", optional = true }
+pkg-config = "0"
+autocfg = "1"
+
+[target.'cfg(target_env = "msvc")'.build-dependencies]
+vcpkg = "0"
+
+# We don't actually use metadeps for annoying reasons but this is still here for tooling
+[package.metadata.pkg-config]
+openssl-rs = "0.1.0"

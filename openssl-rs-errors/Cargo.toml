@@ -1,0 +1,13 @@
+[package]
+name = "openssl-rs-errors"
+version = "0.2.0"
+edition = "2018"
+
+[dependencies]
+cfg-if = "1"
+libc = "0"
+
+openssl-rs-sys = { version = "0", path = "../openssl-rs-sys" }
+
+[dev-dependencies]
+openssl-rs = { version = "0", path = "../openssl-rs" }
