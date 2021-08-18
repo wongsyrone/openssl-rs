@@ -1,7 +1,7 @@
 use std::env;
 
 #[allow(clippy::inconsistent_digit_grouping, clippy::unusual_byte_groupings)]
-#[path = "../openssl-sys/build/cfgs.rs"]
+#[path = "../openssl-rs-sys/build/cfgs.rs"]
 mod cfgs;
 
 fn main() {
@@ -30,11 +30,8 @@ fn main() {
     let openssl_version = env::var("DEP_OPENSSL_VERSION_NUMBER")
         .ok()
         .map(|v| u64::from_str_radix(&v, 16).unwrap());
-    let libressl_version = env::var("DEP_OPENSSL_LIBRESSL_VERSION_NUMBER")
-        .ok()
-        .map(|v| u64::from_str_radix(&v, 16).unwrap());
 
-    for c in cfgs::get(openssl_version, libressl_version) {
+    for c in cfgs::get(openssl_version) {
         cfg.cfg(c, None);
     }
 
@@ -137,5 +134,5 @@ fn main() {
         }
     });
     cfg.fn_cname(|rust, link_name| link_name.unwrap_or(rust).to_string());
-    cfg.generate("../openssl-sys/src/lib.rs", "all.rs");
+    cfg.generate("../openssl-rs-sys/src/lib.rs", "all.rs");
 }
