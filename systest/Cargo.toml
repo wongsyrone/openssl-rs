@@ -6,10 +6,10 @@ edition = "2018"
 
 [dependencies]
 libc = "0.2"
-openssl-sys = { path = "../openssl-sys" }
+openssl-rs-sys = { path = "../openssl-rs-sys" }
 
 [build-dependencies]
 ctest2 = "0"
 
 [features]
-vendored = ['openssl-sys/vendored']
+vendored = ['openssl-rs-sys/vendored']

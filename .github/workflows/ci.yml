@@ -196,14 +196,6 @@ jobs:
             - name: openssl
               version: 1.1.1k
               dl-path: /
-            - name: openssl
-              version: 1.1.0l
-              dl-path: /old/1.1.0
-          include:
-            - target: x86_64-unknown-linux-gnu
-              library:
-                name: libressl
-                version: 3.3.3
       name: ${{ matrix.target }}-${{ matrix.library.name }}-${{ matrix.library.version }}
       runs-on: ubuntu-latest
       env:
@@ -253,9 +245,6 @@ jobs:
             "openssl")
               url="https://openssl.org/source${{ matrix.library.dl-path }}/openssl-${{ matrix.library.version }}.tar.gz"
               ;;
-            "libressl")
-              url="https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${{ matrix.library.version }}.tar.gz"
-              ;;
             esac
 
             case "${{ matrix.target}}" in
@@ -287,9 +276,6 @@ jobs:
             case "${{ matrix.library.name }}" in
             "openssl")
               ./Configure --prefix=$OPENSSL_DIR --libdir=lib $OS_COMPILER -fPIC -g $OS_FLAGS no-shared
-              ;;
-            "libressl")
-              ./configure --prefix=$OPENSSL_DIR --disable-shared --with-pic
               ;;
             esac
 
