@@ -1,5 +1,5 @@
 use libc::*;
-use *;
+use crate::*;
 
 pub enum CMS_ContentInfo {}
 

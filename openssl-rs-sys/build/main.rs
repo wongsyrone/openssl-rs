@@ -159,10 +159,6 @@ specific to your distribution:
     sudo pacman -S openssl
     # On Fedora
     sudo dnf install openssl-devel
-
-See rust-openssl README for more information:
-
-    https://github.com/sfackler/rust-openssl#linux
 ",
                 e
             );
@@ -198,21 +194,20 @@ See rust-openssl README for more information:
         println!("cargo:rustc-cfg={}", cfg);
     }
 
-    
-    
-        let openssl_version = openssl_version.unwrap();
-        println!("cargo:version_number={:x}", openssl_version);
+    let openssl_version = openssl_version.unwrap();
+    println!("cargo:version_number={:x}", openssl_version);
 
-        if openssl_version >= 0x4_00_00_00_0 {
-            version_error()
-        } else if openssl_version >= 0x3_00_00_00_0 {
-            Version::Openssl11x
-        } else if openssl_version >= 0x1_01_01_00_0 {
-            println!("cargo:version=111");
-            Version::Openssl11x
-        } else {
-            version_error()
-        }
+    if openssl_version >= 0x4_00_00_00_0 {
+        version_error()
+    } else if openssl_version >= 0x3_00_00_00_0 {
+        println!("cargo:version=300");
+        Version::Openssl30x
+    } else if openssl_version >= 0x1_01_01_00_0 {
+        println!("cargo:version=111");
+        Version::Openssl11x
+    } else {
+        version_error()
+    }
 }
 
 fn version_error() -> ! {
@@ -276,12 +271,15 @@ fn determine_mode(libdir: &Path, libs: &[&str]) -> &'static str {
         .map(|e| e.file_name())
         .filter_map(|e| e.into_string().ok())
         .collect::<HashSet<_>>();
-    let can_static = libs
-        .iter()
-        .all(|l| files.contains(&format!("lib{}.a", l)) || files.contains(&format!("{}.lib", l)));
+    let can_static = libs.iter().all(|l| {
+        files.contains(&format!("lib{}.a", l))
+            || files.contains(&format!("{}.lib", l))
+            || files.contains(&format!("lib{}.lib", l))
+    });
     let can_dylib = libs.iter().all(|l| {
         files.contains(&format!("lib{}.so", l))
             || files.contains(&format!("{}.dll", l))
+            || files.contains(&format!("lib{}.dll", l))
             || files.contains(&format!("lib{}.dylib", l))
     });
     match (can_static, can_dylib) {

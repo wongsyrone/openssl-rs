@@ -1,6 +1,6 @@
 use libc::*;
 
-use *;
+use crate::*;
 
 #[cfg(any(libressl, all(ossl102, not(ossl110))))]
 pub enum X509_VERIFY_PARAM_ID {}

@@ -1,7 +1,7 @@
 use libc::*;
 use std::ptr;
 
-use *;
+use crate::*;
 
 pub const RSA_F4: c_long = 0x10001;
 
@@ -114,19 +114,19 @@ extern "C" {
 
     #[cfg(any(ossl110, libressl273))]
     pub fn RSA_set0_key(
-        r: *mut ::RSA,
-        n: *mut ::BIGNUM,
-        e: *mut ::BIGNUM,
-        d: *mut ::BIGNUM,
+        r: *mut RSA,
+        n: *mut BIGNUM,
+        e: *mut BIGNUM,
+        d: *mut BIGNUM,
     ) -> c_int;
     #[cfg(any(ossl110, libressl273))]
-    pub fn RSA_set0_factors(r: *mut ::RSA, p: *mut ::BIGNUM, q: *mut ::BIGNUM) -> c_int;
+    pub fn RSA_set0_factors(r: *mut RSA, p: *mut BIGNUM, q: *mut BIGNUM) -> c_int;
     #[cfg(any(ossl110, libressl273))]
     pub fn RSA_set0_crt_params(
-        r: *mut ::RSA,
-        dmp1: *mut ::BIGNUM,
-        dmq1: *mut ::BIGNUM,
-        iqmp: *mut ::BIGNUM,
+        r: *mut RSA,
+        dmp1: *mut BIGNUM,
+        dmq1: *mut BIGNUM,
+        iqmp: *mut BIGNUM,
     ) -> c_int;
     #[cfg(any(ossl110, libressl273))]
     pub fn RSA_get0_key(
@@ -188,7 +188,7 @@ extern "C" {
         k: *mut RSA,
         pad: c_int,
     ) -> c_int;
-    pub fn RSA_check_key(r: *const ::RSA) -> c_int;
+    pub fn RSA_check_key(r: *const RSA) -> c_int;
     pub fn RSA_free(rsa: *mut RSA);
     pub fn RSA_up_ref(rsa: *mut RSA) -> c_int;
 

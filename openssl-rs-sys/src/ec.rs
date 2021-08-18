@@ -1,6 +1,6 @@
 use libc::*;
 
-use *;
+use crate::*;
 
 #[repr(C)]
 #[derive(Copy, Clone)]

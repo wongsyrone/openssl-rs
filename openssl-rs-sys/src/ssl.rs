@@ -1,7 +1,7 @@
 use libc::*;
 use std::ptr;
 
-use *;
+use crate::*;
 
 #[cfg(not(any(libressl, ossl110)))]
 pub const SSL_MAX_KRB5_PRINCIPAL_LENGTH: c_int = 256;
@@ -25,8 +25,7 @@ pub const SSL_FILETYPE_ASN1: c_int = X509_FILETYPE_ASN1;
 pub enum SSL_METHOD {}
 pub enum SSL_CIPHER {}
 
-        pub enum SSL_SESSION {}
-
+pub enum SSL_SESSION {}
 
 stack!(stack_st_SSL_CIPHER);
 
@@ -92,7 +91,7 @@ pub const SSL_EXT_TLS1_3_CERTIFICATE_REQUEST: c_uint = 0x4000;
 #[cfg(ossl111)]
 pub type SSL_custom_ext_add_cb_ex = Option<
     unsafe extern "C" fn(
-        ssl: *mut ::SSL,
+        ssl: *mut SSL,
         ext_type: c_uint,
         context: c_uint,
         out: *mut *const c_uchar,
@@ -221,9 +220,7 @@ cfg_if! {
     }
 }
 
-
-        pub const SSL_OP_CRYPTOPRO_TLSEXT_BUG: ssl_op_type!() = 0x80000000;
-
+pub const SSL_OP_CRYPTOPRO_TLSEXT_BUG: ssl_op_type!() = 0x80000000;
 
 cfg_if! {
     if #[cfg(ossl300)] {

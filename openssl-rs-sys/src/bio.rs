@@ -1,6 +1,6 @@
 use libc::*;
 
-use *;
+use crate::*;
 
 pub const BIO_TYPE_NONE: c_int = 0;
 
@@ -36,9 +36,7 @@ pub const BIO_FLAGS_SHOULD_RETRY: c_int = 0x08;
 pub type bio_info_cb =
     Option<unsafe extern "C" fn(*mut BIO, c_int, *const c_char, c_int, c_long, c_long)>;
 
-
-        pub enum BIO_METHOD {}
-
+pub enum BIO_METHOD {}
 
 pub unsafe fn BIO_get_mem_data(b: *mut BIO, pp: *mut *mut c_char) -> c_long {
     BIO_ctrl(b, BIO_CTRL_INFO, 0, pp as *mut c_void)

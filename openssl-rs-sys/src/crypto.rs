@@ -1,6 +1,6 @@
 use libc::*;
 
-use *;
+use crate::*;
 
 #[cfg(not(ossl110))]
 pub const CRYPTO_LOCK_X509: c_int = 3;
@@ -13,21 +13,18 @@ pub const CRYPTO_LOCK_SSL_SESSION: c_int = 14;
 
 stack!(stack_st_void);
 
+pub const CRYPTO_EX_INDEX_SSL: c_int = 0;
+pub const CRYPTO_EX_INDEX_SSL_CTX: c_int = 1;
 
-        pub const CRYPTO_EX_INDEX_SSL: c_int = 0;
-        pub const CRYPTO_EX_INDEX_SSL_CTX: c_int = 1;
-
-
-        extern "C" {
-            pub fn OpenSSL_version_num() -> c_ulong;
-            pub fn OpenSSL_version(key: c_int) -> *const c_char;
-        }
-        pub const OPENSSL_VERSION: c_int = 0;
-        pub const OPENSSL_CFLAGS: c_int = 1;
-        pub const OPENSSL_BUILT_ON: c_int = 2;
-        pub const OPENSSL_PLATFORM: c_int = 3;
-        pub const OPENSSL_DIR: c_int = 4;
-
+extern "C" {
+    pub fn OpenSSL_version_num() -> c_ulong;
+    pub fn OpenSSL_version(key: c_int) -> *const c_char;
+}
+pub const OPENSSL_VERSION: c_int = 0;
+pub const OPENSSL_CFLAGS: c_int = 1;
+pub const OPENSSL_BUILT_ON: c_int = 2;
+pub const OPENSSL_PLATFORM: c_int = 3;
+pub const OPENSSL_DIR: c_int = 4;
 
 // FIXME should be options
 pub type CRYPTO_EX_new = unsafe extern "C" fn(
@@ -90,12 +87,10 @@ extern "C" {
     ) -> c_int;
 }
 
-
-        extern "C" {
-            pub fn CRYPTO_malloc(num: size_t, file: *const c_char, line: c_int) -> *mut c_void;
-            pub fn CRYPTO_free(buf: *mut c_void, file: *const c_char, line: c_int);
-        }
-
+extern "C" {
+    pub fn CRYPTO_malloc(num: size_t, file: *const c_char, line: c_int) -> *mut c_void;
+    pub fn CRYPTO_free(buf: *mut c_void, file: *const c_char, line: c_int);
+}
 
 extern "C" {
     #[cfg(all(ossl101, not(ossl300)))]

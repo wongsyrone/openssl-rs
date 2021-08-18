@@ -1,6 +1,6 @@
 use libc::*;
 
-use *;
+use crate::*;
 
 pub enum CONF_METHOD {}
 

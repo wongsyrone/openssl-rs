@@ -1,4 +1,5 @@
 use libc::*;
+use crate::*;
 
 pub const ERR_TXT_MALLOCED: c_int = 0x01;
 pub const ERR_TXT_STRING: c_int = 0x02;

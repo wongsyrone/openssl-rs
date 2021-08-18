@@ -1,6 +1,6 @@
 use libc::*;
 
-use *;
+use crate::*;
 
 pub const X509_FILETYPE_PEM: c_int = 1;
 pub const X509_FILETYPE_ASN1: c_int = 2;
@@ -24,33 +24,21 @@ stack!(stack_st_X509_EXTENSION);
 
 stack!(stack_st_X509_ATTRIBUTE);
 
+pub enum X509_REQ_INFO {}
 
-        pub enum X509_REQ_INFO {}
-
-
-
-        pub enum X509_CRL {}
-    
+pub enum X509_CRL {}
 
 stack!(stack_st_X509_CRL);
 
+pub enum X509_CRL_INFO {}
 
-        pub enum X509_CRL_INFO {}
-
-
-
-        pub enum X509_REVOKED {}
-
+pub enum X509_REVOKED {}
 
 stack!(stack_st_X509_REVOKED);
 
+pub enum X509_REQ {}
 
-        pub enum X509_REQ {}
-
-
-
-        pub enum X509_CINF {}
-    
+pub enum X509_CINF {}
 
 stack!(stack_st_X509);
 
@@ -62,9 +50,7 @@ cfg_if! {
     }
 }
 
-
-        pub enum X509_OBJECT {}
-
+pub enum X509_OBJECT {}
 
 stack!(stack_st_X509_OBJECT);
 

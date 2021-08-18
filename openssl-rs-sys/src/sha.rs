@@ -1,6 +1,6 @@
 use libc::*;
 use std::ptr;
-use *;
+use crate::*;
 
 cfg_if! {
     if #[cfg(not(osslconf = "OPENSSL_NO_DEPRECATED_3_0"))] {

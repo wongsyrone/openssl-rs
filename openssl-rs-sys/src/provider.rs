@@ -1,6 +1,6 @@
 use libc::*;
 
-use *;
+use crate::*;
 
 pub enum OSSL_PROVIDER {}
 pub enum OSSL_PARAM {}

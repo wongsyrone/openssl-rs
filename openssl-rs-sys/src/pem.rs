@@ -1,6 +1,6 @@
 use libc::*;
 
-use *;
+use crate::*;
 
 pub type pem_password_cb = Option<
     unsafe extern "C" fn(

@@ -1,6 +1,6 @@
 use libc::*;
 
-use *;
+use crate::*;
 
 pub enum PKCS7_SIGNED {}
 pub enum PKCS7_ENVELOPE {}

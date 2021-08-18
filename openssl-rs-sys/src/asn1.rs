@@ -1,6 +1,6 @@
 use libc::*;
 
-use *;
+use crate::*;
 
 // ASN.1 tag values
 pub const V_ASN1_EOC: c_int = 0;

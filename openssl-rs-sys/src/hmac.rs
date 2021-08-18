@@ -1,6 +1,6 @@
 use libc::*;
 
-use *;
+use crate::*;
 
 cfg_if! {
     if #[cfg(ossl110)] {

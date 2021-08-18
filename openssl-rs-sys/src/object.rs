@@ -1,6 +1,6 @@
 use libc::*;
 
-use *;
+use crate::*;
 
 extern "C" {
     pub fn OBJ_nid2ln(nid: c_int) -> *const c_char;

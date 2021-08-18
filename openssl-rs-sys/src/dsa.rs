@@ -1,6 +1,6 @@
 use libc::*;
 
-use *;
+use crate::*;
 
 extern "C" {
     pub fn DSA_new() -> *mut DSA;

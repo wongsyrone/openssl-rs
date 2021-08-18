@@ -1,4 +1,4 @@
-use *;
+use crate::*;
 
 extern "C" {
     pub fn DH_new() -> *mut DH;

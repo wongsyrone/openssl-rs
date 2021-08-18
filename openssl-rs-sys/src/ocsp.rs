@@ -1,6 +1,6 @@
 use libc::*;
 
-use *;
+use crate::*;
 
 pub const OCSP_REVOKED_STATUS_NOSTATUS: c_int = -1;
 pub const OCSP_REVOKED_STATUS_UNSPECIFIED: c_int = 0;
