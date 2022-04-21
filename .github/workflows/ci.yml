@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.0.2
       - name: Install latest nightly Rust toolchain
         id: install-rust-toolchain
         uses: actions-rs/toolchain@v1
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.0.2
       - name: Install latest nightly Rust toolchain
         id: install-rust-toolchain
         uses: actions-rs/toolchain@v1
@@ -72,7 +72,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.0.2
       - name: Install min 1.46.0 Rust toolchain
         id: install-rust-toolchain
         uses: actions-rs/toolchain@v1
@@ -107,7 +107,7 @@ jobs:
       CARGO_LOG: cargo::core::compiler::fingerprint=trace
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.0.2
       - name: Install latest nightly Rust toolchain
         id: install-rust-toolchain
         uses: actions-rs/toolchain@v1
@@ -150,7 +150,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.0.2
       - name: Install latest nightly Rust toolchain
         id: install-rust-toolchain
         uses: actions-rs/toolchain@v1
@@ -205,7 +205,7 @@ jobs:
         CARGO_TARGET_ARM_UNKNOWN_LINUX_GNUEABIHF_RUNNER: qemu-arm -L /usr/arm-linux-gnueabihf
       steps:
         - name: Checkout
-          uses: actions/checkout@v2
+          uses: actions/checkout@v3.0.2
         - name: Install latest nightly Rust toolchain
           id: install-rust-toolchain
           uses: actions-rs/toolchain@v1
