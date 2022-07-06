@@ -13,7 +13,7 @@ libc = "0"
 
 [build-dependencies]
 cc = "1"
-openssl-src = { version = "111.0.1", optional = true }
+openssl-src = { version = "300.0.9", optional = true }
 pkg-config = "0"
 autocfg = "1"
 
