@@ -117,7 +117,7 @@ jobs:
           default: true
           profile: default
       - name: Prepare vcpkg
-        uses: lukka/run-vcpkg@v7
+        uses: lukka/run-vcpkg@v10
         id: runvcpkg
         with:
           vcpkgArguments: openssl:x64-windows
