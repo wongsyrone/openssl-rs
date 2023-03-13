@@ -6,7 +6,7 @@ edition = "2018"
 vendored = ['ffi/vendored']
 
 [dependencies]
-bitflags = "1"
+bitflags = "2"
 cfg-if = "1"
 foreign-types = "0"
 libc = "0"
